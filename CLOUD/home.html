@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homely Stay - Find Your Perfect Place</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Find Your Home Away From Home</h1>
+    <p>Book affordable and comfortable living spaces for students & young professionals.</p>
+  </header>
+
+  <section class="search-bar">
+    <input type="text" id="search-location" placeholder="Search by Location">
+    <button type="button" onclick="searchProperties()">Search</button>
+  </section>
+
+  <section class="properties">
+    <h2>Available Properties</h2>
+    <ul id="property-list">
+    </ul>
+  </section>
+
+  <section class="advertisement">
+    <h2>List Your Property</h2>
+    <p>Become a vendor and advertise your accommodation to potential tenants.</p>
+    <a href="vendor_signup.html">Sign Up as a Vendor</a>
+  </section>
+
+  <footer>
+    <p> Homely Stay 2024</p>
+    <a href="#">About Us</a>
+    <a href="#">Contact</a>
+    <a href="#">FAQs</a>
+  </footer>
+
+  <script>
+  // Function to search properties based on location
+  function searchProperties() {
+    const searchLocation = document.getElementById('search-location').value;
+
+    // Simulate fetching properties from a database (replace with actual data fetching logic)
+    const sampleProperties = [
+      { location: "New York City", type: "Apartment", rent: 1500 },
+      { location: "Los Angeles", type: "Studio", rent: 1200 },
+      { location: "Chicago", type: "Shared Room", rent: 800 },
+    ];
+
+    const filteredProperties = sampleProperties.filter(property => property.location.toLowerCase().includes(searchLocation.toLowerCase()));
+
+    // Clear existing property listings
+    document.getElementById('property-list').innerHTML = "";
+
+    // Add filtered properties to the list
+    filteredProperties.forEach(property => {
+      const listItem = document.createElement('li');
+      listItem.innerHTML = `<h3>${property.location} - ${property.type}</h3><p>Rent: $${property.rent}/month</p>`;
+      document.getElementById('property-list').appendChild(listItem);
+    });
+  }
+  </script>
+</body>
+</html>
